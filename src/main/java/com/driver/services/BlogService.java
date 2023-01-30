@@ -22,14 +22,15 @@ public class BlogService {
     ImageService imageService1;
 
     @Autowired
-    ImageRepository imageRepository1;
+    ImageRepository imageRepository;
 
     @Autowired
     UserRepository userRepository1;
 
     public List<Blog> showBlogs(){
         //find all blogs
-        return blogRepository1.findAll();
+        List<Blog> blogList = blogRepository1.findAll();
+        return blogList;
     }
 
     public void createAndReturnBlog(Integer userId, String title, String content) {
@@ -54,7 +55,8 @@ public class BlogService {
 
     public Blog findBlogById(int blogId){
         //find a blog
-        return blogRepository1.findById(blogId).get();
+        Blog blog = blogRepository1.findById(blogId).get();
+        return blog;
     }
 
     public void addImage(Integer blogId, String description, String dimensions){
